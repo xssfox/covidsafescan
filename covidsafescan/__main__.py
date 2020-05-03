@@ -12,7 +12,7 @@ async def run( loop):
                 try:
                     async with bleak.BleakClient(d.address, loop=loop) as client:
                         message = await client.read_gatt_char(UUID)
-                        print(message.decode("utf-8"))
+                        print(d.address + " : " + message.decode("utf-8"))
                 except KeyboardInterrupt:
                     raise
                 except: # ignore errors - yolo driven dev
