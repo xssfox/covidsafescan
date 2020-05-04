@@ -5,7 +5,8 @@ from twisted.internet.asyncioreactor import AsyncioSelectorReactor
 import traceback
 import argparse
 import sys
-
+import datetime
+import json
 
 UUID="b82ab3fc-1595-4f6a-80f0-fe094cc218f9"
 def log(message):
@@ -25,7 +26,15 @@ async def run( loop):
                     try:
                         async with bleak.BleakClient(d.address, loop=loop) as client:
                             message = await client.read_gatt_char(UUID)
-                            print(d.address + " : " + message.decode("utf-8"))
+                            if args.json: #soooo deeeeep . what is pep8?
+                                data = {
+                                    "time": datetime.datetime.now().isoformat(),
+                                    "data":  message.decode("utf-8"),
+                                    "address": d.address
+                                }
+                                print(json.dumps(data))
+                            else:
+                                print("[" + datetime.datetime.now().isoformat() + "] " + d.address + " : " + message.decode("utf-8"))
                     except KeyboardInterrupt:
                         raise
                     except: # ignore errors - yolo driven dev
@@ -38,6 +47,9 @@ parser = argparse.ArgumentParser(description='Covidsafe BLE Scanner')
 parser.add_argument('--debug', dest='debug', action='store_const',
                    const=True, default=False,
                    help='Enables logs')
+parser.add_argument('--json', dest='json', action='store_const',
+                   const=True, default=False,
+                   help='JSON Output')
 args = parser.parse_args()
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run(loop))

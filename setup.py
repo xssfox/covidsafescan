@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(name='covidsafescan',
-      version='1.5',
+      version='1.6',
       description='Covid Safe Scanner',
       author='xssfox',
       author_email='pypi@sprocketfox.io',
