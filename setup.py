@@ -1,8 +1,13 @@
 import setuptools
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setuptools.setup(name='covidsafescan',
-      version='1.6',
+      version='1.7',
       description='Covid Safe Scanner',
+      long_description=long_description,
+      long_description_content_type="text/markdown",
       author='xssfox',
       author_email='pypi@sprocketfox.io',
       url='https://github.com/xssfox/covidsafescan',
