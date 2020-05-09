@@ -3,7 +3,8 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(name='covidsafescan',
+setuptools.setup(
+      name='covidsafescan',
       version='1.8',
       description='Covid Safe Scanner',
       long_description=long_description,
@@ -15,5 +16,5 @@ setuptools.setup(name='covidsafescan',
       entry_points = {
           'console_scripts': ['covidsafescan=covidsafescan:__main__']
       },
-      install_requires=['bleak', 'twisted']
-     )
+      install_requires=['bleak'],
+)

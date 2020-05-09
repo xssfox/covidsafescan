@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import bleak
 import asyncio
-from twisted.internet.asyncioreactor import AsyncioSelectorReactor
 import traceback
 import argparse
 import sys
@@ -26,11 +25,11 @@ async def connect(address, loop):
 def log(message):
     if args.debug:
         print(str(message), file=sys.stderr)
-async def run( loop):
-    reactor = AsyncioSelectorReactor(loop)
+
+async def run(loop):
     while True:
         log("Scanning")
-        devices = await bleak.discover(reactor=reactor, timeout=args.timeout)
+        devices = await bleak.discover(timeout=args.timeout)
         log("Found devices")
         log(", ".join([x.address for x in devices]))
         for d in devices:
