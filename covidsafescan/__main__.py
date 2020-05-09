@@ -53,7 +53,7 @@ async def run(loop):
                 manufacturer_data = d.metadata['manufacturer_data']
                 if WITHINGS_ID in manufacturer_data:
                     withings_data = manufacturer_data[WITHINGS_ID]
-                    log(f'* Detected Withings manufacturer data: {str(withings_data)} ({withings_data})')
+                    log(f'* Detected Withings manufacturer data: {base64.b16encode(bytes(withings_data)).decode()} ({withings_data})')
                     # TODO: Find the actual UUID to use. For now, assume prod.
                     if uuid is None:
                         uuid = PRODUCTION_UUID
