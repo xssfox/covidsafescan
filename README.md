@@ -8,7 +8,7 @@ Install with `pip3 install covidsafescan`
 
 ```
 usage: covidsafescan [-h] [--debug] [--json] [--timeout TIMEOUT] [--once]
-                   [--no-adv-uuids] [--no-adv-manuf]
+                     [--no-adv-uuids] [--no-adv-manuf] [--apple] [--passive]
 
 Covidsafe BLE Scanner
 
@@ -21,4 +21,8 @@ optional arguments:
   --no-adv-uuids     Don't use UUIDs in advertisement frames to find CovidSafe
   --no-adv-manuf     Don't use Withings Manufacturer Data in advertisement
                      frames to find CovidSafe
+  --apple            Use Apple Overflow Area to find CovidSafe (experimental,
+                     may crash!)
+  --passive          Don't try to exchange GATT details, just report MAC
+                     addresses
 ```
