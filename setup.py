@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
       name='covidsafescan',
-      version='1.11',
+      version='1.13',
       description='Covid Safe Scanner',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -14,7 +14,7 @@ setuptools.setup(
       url='https://github.com/xssfox/covidsafescan',
       packages=['covidsafescan'],
       entry_points = {
-          'console_scripts': ['covidsafescan=covidsafescan:__main__']
+          'console_scripts': ['covidsafescan=covidsafescan:__main__.main']
       },
       install_requires=['bleak'],
 )

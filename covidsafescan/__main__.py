@@ -72,35 +72,40 @@ async def run(loop):
         if args.once:
             break
 
-parser = argparse.ArgumentParser(description='Covidsafe BLE Scanner')
-parser.add_argument(
-    '--debug',
-    action='store_true',
-    help='Enables logs')
-parser.add_argument(
-    '--json',
-    action='store_true',
-    help='JSON Output')
-parser.add_argument(
-    '--timeout',
-    type=int,
-    dest='timeout',
-    default=15,
-    help='Timeout, in seconds (default: %(default)s)')
-parser.add_argument(
-    '--once',
-    action='store_true',
-    help='Only run once')
-parser.add_argument(
-    '--no-adv-uuids',
-    dest='adv_uuids', action='store_false',
-    help='Don\'t use UUIDs in advertisement frames to find CovidSafe')
+def main():
+    global args
+    parser = argparse.ArgumentParser(description='Covidsafe BLE Scanner')
+    parser.add_argument(
+        '--debug',
+        action='store_true',
+        help='Enables logs')
+    parser.add_argument(
+        '--json',
+        action='store_true',
+        help='JSON Output')
+    parser.add_argument(
+        '--timeout',
+        type=int,
+        dest='timeout',
+        default=15,
+        help='Timeout, in seconds (default: %(default)s)')
+    parser.add_argument(
+        '--once',
+        action='store_true',
+        help='Only run once')
+    parser.add_argument(
+        '--no-adv-uuids',
+        dest='adv_uuids', action='store_false',
+        help='Don\'t use UUIDs in advertisement frames to find CovidSafe')
 
-parser.add_argument(
-    '--no-adv-manuf',
-    dest='adv_manuf', action='store_false',
-    help='Don\'t use Withings Manufacturer Data in advertisement frames to find CovidSafe')
+    parser.add_argument(
+        '--no-adv-manuf',
+        dest='adv_manuf', action='store_false',
+        help='Don\'t use Withings Manufacturer Data in advertisement frames to find CovidSafe')
 
-args = parser.parse_args()
-loop = asyncio.get_event_loop()
-loop.run_until_complete(run(loop))
+    args = parser.parse_args()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(run(loop))
+
+if __name__ == "__main__":
+    main()
