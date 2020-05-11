@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
       name='covidsafescan',
-      version='1.13',
+      version='1.14',
       description='Covid Safe Scanner',
       long_description=long_description,
       long_description_content_type="text/markdown",
